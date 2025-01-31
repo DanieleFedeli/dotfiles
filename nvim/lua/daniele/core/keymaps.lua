@@ -10,8 +10,8 @@ keymap.set("n", "<Right>", "<Nop>", opts)
 keymap.set({ "n", "v" }, "H", "^", opts)
 keymap.set({ "n", "v" }, "L", "$", opts)
 
--- Select all
-keymap.set('n', "<C-a>", "gg<S-v>G")
+-- -- Select all
+-- keymap.set('n', "<C-a>", "gg<S-v>G")
 
 -- Use sytstem clipboard
 keymap.set({ "n", "v" }, "<leader>y", '"+y', opts)

@@ -2,7 +2,7 @@ return {
   "ibhagwan/fzf-lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   ---@module 'fzf-lua'
-  ---@type 'fzf-lua.Config'
+  ---@type 'fzf-lua.Types'
   opts = {
     git = {
       file_icons = true
@@ -17,6 +17,7 @@ return {
       }
     },
     oldfiles = {
+      cwd_only = true,
       include_current_session = true,
     },
     grep = {
