@@ -1,16 +1,24 @@
 return {
+  { "Bilal2453/luvit-meta" },
+  { "justinsgithub/wezterm-types" },
   {
     "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
+    ft = "lua",
     opts = {
+      enabled = true,
       library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        "luvit-meta/library",
+        "wezterm-types/types",
+        vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
+        --[[
+          vim.fn.expand "$HOME/workspace/neovim/ui/nvchad_types",
+          vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+          vim.fn.expand "$VIMRUNTIME/lua/vim",
+          "${3rd}/luv/library",
+        ]]
       },
     },
   },
-  --- @module 'blink.cmp'
   {
     "saghen/blink.cmp",
     version = "*",
@@ -18,9 +26,6 @@ return {
       { "giuxtaposition/blink-cmp-copilot" }
     },
     event = "InsertEnter",
-
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
     opts = {
       appearance = {
         use_nvim_cmp_as_default = false,
