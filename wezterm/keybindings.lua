@@ -16,7 +16,13 @@ function Keybindings.setup(config)
     { key = "\\", mods = "LEADER",     action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = "r",  mods = "LEADER",     action = act.ActivateKeyTable { name = "resize_pane", one_shot = false } },
     { key = "[",  mods = "LEADER",     action = act.ActivateCopyMode },
-    { key = "K",  mods = "CTRL|SHIFT", action = act.ClearScrollback 'ScrollbackAndViewport' }
+    { key = "K",  mods = "CTRL|SHIFT", action = act.ClearScrollback 'ScrollbackAndViewport' },
+    {
+      key = ",",
+      mods = "SUPER",
+      action = act.SpawnCommandInNewTab { cwd = "~/.config", args = { "/bin/zsh", "-c", "nvim ~/.config" },
+      },
+    }
   }
 
   -- Leader + Number to Activate Tab
@@ -33,6 +39,7 @@ function Keybindings.setup(config)
     key = "q",
     mods = "LEADER",
     action = wezterm.action_callback(function()
+      wezterm.log_info("Loading LX workspace")
       Workspaces.load_lx()
     end),
   })

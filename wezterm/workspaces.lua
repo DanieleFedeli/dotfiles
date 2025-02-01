@@ -1,29 +1,20 @@
 local wezterm = require "wezterm"
+local mux = wezterm.mux
 
 local Workspaces = {}
 
-local zsh_path = "/bin/zsh"
 local home = os.getenv("HOME")
 
--- Function to check if a workspace exists; create it if not
-local function ensure_workspace_exists(name)
-  local mux = wezterm.mux
-  for _, workspace in ipairs(mux.get_workspace_names()) do
-    if workspace == name then
-      mux.set_active_workspace(name)
-      return nil
-    end
+local function has_value(tab, val)
+  for _index, value in ipairs(tab) do
+    if value == val then return true end
   end
-  return mux.spawn_window({ workspace = name })
-end
 
+  return false
+end
 -- Function to create a new tab with an editor + Git pane
 local function create_dev_tab(window, title, cwd)
-  if not window then return end
-
   local tab, pane = window:spawn_tab({ cwd = cwd })
-  if not tab then return end
-
   tab:set_title(title)
   pane:send_text("nvim .\n")
 
@@ -37,14 +28,22 @@ end
 
 -- ======= Function to Load "LX" Workspace =======
 function Workspaces.load_lx()
-  local lx_win = ensure_workspace_exists("LX")
-  if not lx_win then return end -- ✅ Prevent nil access
+  if has_value(mux.get_workspace_names(), "LX") then
+    wezterm.log_error("Workspace LX already exists")
+    mux.set_active_workspace("LX")
+    return
+  end
 
-  create_dev_tab(lx_win, "Disco", home .. "/Work/service-disco-graphql-api")
-  create_dev_tab(lx_win, "Service editor", home .. "/Work/service-editor")
+  local tab, pane, window = mux.spawn_window({ workspace = "LX" })
 
-  local k9s_tab = lx_win:spawn_tab({ cwd = home, args = { zsh_path, "-c", "k9s" } })
-  if k9s_tab then k9s_tab:set_title("K9S") end
+  tab:set_title("K9S")
+  wezterm.log_info("PANE", pane)
+  pane:send_text("k9s\n")
+
+  create_dev_tab(window, "Disco", home .. "/Work/service-disco-graphql-api")
+  create_dev_tab(window, "Service editor", home .. "/Work/service-editor")
+
+  mux.set_active_workspace("LX")
 end
 
 return Workspaces
