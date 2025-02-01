@@ -37,7 +37,6 @@ function Workspaces.load_lx()
   local tab, pane, window = mux.spawn_window({ workspace = "LX" })
 
   tab:set_title("K9S")
-  wezterm.log_info("PANE", pane)
   pane:send_text("k9s\n")
 
   create_dev_tab(window, "Disco", home .. "/Work/service-disco-graphql-api")

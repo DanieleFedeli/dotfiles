@@ -2,6 +2,8 @@ local wezterm = require "wezterm"
 local Workspaces = require "workspaces"
 local act = wezterm.action
 
+local home = os.getenv("HOME")
+
 local Keybindings = {}
 
 function Keybindings.setup(config)
@@ -20,7 +22,7 @@ function Keybindings.setup(config)
     {
       key = ",",
       mods = "SUPER",
-      action = act.SpawnCommandInNewTab { cwd = "~/.config", args = { "/bin/zsh", "-c", "nvim ~/.config" },
+      action = act.SpawnCommandInNewTab { cwd = home .. "/.config", args = { "/bin/zsh", "-c", "nvim ~/.config" },
       },
     }
   }
@@ -39,7 +41,6 @@ function Keybindings.setup(config)
     key = "q",
     mods = "LEADER",
     action = wezterm.action_callback(function()
-      wezterm.log_info("Loading LX workspace")
       Workspaces.load_lx()
     end),
   })
