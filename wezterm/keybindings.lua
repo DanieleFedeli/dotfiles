@@ -2,27 +2,24 @@ local wezterm = require "wezterm"
 local Workspaces = require "workspaces"
 local act = wezterm.action
 
-local home = os.getenv("HOME")
-
 local Keybindings = {}
 
 function Keybindings.setup(config)
   config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 
   config.keys = {
-    { key = "h",  mods = "CMD",     action = act.ActivatePaneDirection("Left") },
-    { key = "j",  mods = "CMD",     action = act.ActivatePaneDirection("Down") },
-    { key = "k",  mods = "CMD",     action = act.ActivatePaneDirection("Up") },
-    { key = "l",  mods = "CMD",     action = act.ActivatePaneDirection("Right") },
-    { key = "-",  mods = "CMD",     action = act.SplitVertical { domain = "CurrentPaneDomain" } },
-    { key = "\\", mods = "CMD",     action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
-    { key = "[",  mods = "CMD",     action = act.ActivateCopyMode },
+    { key = "h",  mods = "CMD",        action = act.ActivatePaneDirection("Left") },
+    { key = "j",  mods = "CMD",        action = act.ActivatePaneDirection("Down") },
+    { key = "k",  mods = "CMD",        action = act.ActivatePaneDirection("Up") },
+    { key = "l",  mods = "CMD",        action = act.ActivatePaneDirection("Right") },
+    { key = "-",  mods = "CMD",        action = act.SplitVertical { domain = "CurrentPaneDomain" } },
+    { key = "\\", mods = "CMD",        action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
+    { key = "[",  mods = "CMD",        action = act.ActivateCopyMode },
     { key = "K",  mods = "CTRL|SHIFT", action = act.ClearScrollback 'ScrollbackAndViewport' },
     {
       key = ",",
       mods = "SUPER",
-      action = act.SpawnCommandInNewTab { cwd = home .. "/.config", args = { "/bin/zsh", "-c", "nvim ~/.config" },
-      },
+      action = act.SpawnCommandInNewTab { args = { "/bin/zsh", "-c", "nvim ~/.config" } },
     }
   }
 
