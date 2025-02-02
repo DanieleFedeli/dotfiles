@@ -6,7 +6,7 @@ function Appearance.setup(config)
   config.color_scheme = "Catppuccin Mocha"
   config.font = wezterm.font "MesloLGS NF"
   config.font_size = 18.0
-  config.window_background_opacity = 0.8
+  config.window_background_opacity = 0.9
   config.macos_window_background_blur = 10
   config.window_decorations = "RESIZE"
   config.use_fancy_tab_bar = false
