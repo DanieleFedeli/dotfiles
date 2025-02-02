@@ -1,5 +1,4 @@
 local settings = {
-  theme = "gruvbox", -- ayu|gruvbox
   indentChar = "│", -- │, |, ¦, ┆, ┊
   separatorChar = "-", -- ─, -, .
   aspect = "clean", -- normal|clean
