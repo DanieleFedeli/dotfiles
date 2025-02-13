@@ -10,8 +10,12 @@ keymap.set("n", "<Right>", "<Nop>", opts)
 keymap.set({ "n", "v" }, "H", "^", opts)
 keymap.set({ "n", "v" }, "L", "$", opts)
 
--- -- Select all
--- keymap.set('n', "<C-a>", "gg<S-v>G")
+-- Select all
+keymap.set('n', "<C-a>", "gg<S-v>G")
+
+-- Split window
+keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "sv", ":vsplit<Return>", opts)
 
 -- Use sytstem clipboard
 keymap.set({ "n", "v" }, "<leader>y", '"+y', opts)
@@ -20,6 +24,8 @@ keymap.set({ "n", "v" }, "<leader>p", '"+p', opts)
 -- Tabs navigation
 keymap.set('n', ']t', '<CMD>BufferLineCycleNext<CR>')
 keymap.set('n', '[t', '<CMD>BufferLineCyclePrev<CR>')
+keymap.set('n', '<tab>', '<CMD>BufferLineCycleNext<CR>')
+keymap.set('n', '<s-tab>', '<CMD>BufferLineCyclePrev<CR>')
 
 -- Map <Esc> in terminal mode to exit to normal mode
 keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true, silent = true })
