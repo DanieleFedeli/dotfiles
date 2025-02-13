@@ -41,6 +41,7 @@ function Workspaces.load_lx()
 
   create_dev_tab(window, "DISCO", home .. "/Work/service-disco-graphql-api")
   create_dev_tab(window, "SERVICE EDITOR", home .. "/Work/service-editor")
+  create_dev_tab(window, "APP LO", home .. "/Work/app-learning-objectives")
 
   mux.set_active_workspace("LX")
 end

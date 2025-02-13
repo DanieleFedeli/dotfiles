@@ -15,6 +15,7 @@ function Keybindings.setup(config)
     { key = "-",  mods = "CMD",        action = act.SplitVertical { domain = "CurrentPaneDomain" } },
     { key = "\\", mods = "CMD",        action = act.SplitHorizontal { domain = "CurrentPaneDomain" } },
     { key = "[",  mods = "CMD",        action = act.ActivateCopyMode },
+    { key = "Z",  mods = "CMD",        action = act.TogglePaneZoomState },
     { key = "K",  mods = "CTRL|SHIFT", action = act.ClearScrollback 'ScrollbackAndViewport' },
     {
       key = ",",

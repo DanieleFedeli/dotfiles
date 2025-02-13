@@ -4,7 +4,8 @@ return {
     branch = 'main',
     opts = {
       window = {
-        layout = 'float',
+        layout = 'vertical',
+        width = 0.3,
       },
       model = 'claude-3.5-sonnet',
       mappings = {
