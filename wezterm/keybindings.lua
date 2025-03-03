@@ -19,7 +19,7 @@ function Keybindings.setup(config)
     { key = "K",  mods = "CTRL|SHIFT", action = act.ClearScrollback 'ScrollbackAndViewport' },
     {
       key = ",",
-      mods = "SUPER",
+      mods = "CMD",
       action = act.SpawnCommandInNewTab { args = { "/bin/zsh", "-c", "nvim ~/.config" } },
     }
   }
