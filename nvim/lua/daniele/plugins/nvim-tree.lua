@@ -1,12 +1,6 @@
 -- indent char from settings
 local settings = require("daniele.settings")
 
--- disable indent guides if aspect is clean
-local enable = true
-if settings.aspect == "clean" then
-  enable = false
-end
-
 -- recommended settings from nvim-tree documentation
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
@@ -39,7 +33,7 @@ return {
       hidden_display = "all",
       root_folder_label = ".",
       indent_markers = {
-        enable = enable, -- folder level guide
+        enable = false, -- folder level guide
         icons = {
           corner = "└",
           edge = settings.indentChar,
@@ -70,7 +64,7 @@ return {
     },
     actions = {
       open_file = {
-        quit_on_open = true,
+        resize_window = true,
         window_picker = {
           enable = false,
         },

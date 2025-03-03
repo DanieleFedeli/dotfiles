@@ -1,12 +1,3 @@
--- require settings
-local settings = require("daniele.settings")
-
--- set simple render if aspect is clean
-local render = "default"
-if settings.aspect == "clean" then
-	render = "simple"
-end
-
 return {
 	"rcarriga/nvim-notify",
 	lazy = true,
@@ -18,7 +9,7 @@ return {
 		-- custom setup
 		notify.setup({
 			stages = "fade_in_slide_out", -- animation style
-			render = render, -- notification appearance: default|simple
+			render = "default", -- notification appearance: default|simple
 			timeout = 3000, -- time to out
 		})
 

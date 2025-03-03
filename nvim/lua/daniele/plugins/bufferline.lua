@@ -1,19 +1,17 @@
--- require settings
-local settings = require("daniele.settings")
-
 --- @module 'bufferline'
 return {
   "akinsho/bufferline.nvim",
   version = "*",
   dependencies = { "nvim-tree/nvim-web-devicons", },
-  --- @type bufferline.Config
   opts = {
     options = {
-      numbers = "ordinal",                                -- add tabs ordinal numbers
-      color_icons = settings.theme ~= "gruvbox",
-      tab_size = settings.aspect == "clean" and 22 or 18, -- default: 18
+      persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+      numbers = "ordinal",        -- add tabs ordinal numbers
+      color_icons = "gruvbox",
+      tab_size = 18,              -- default: 18
       close_icon = "",
       show_buffer_icons = true,
+      enforce_regular_tabs = true,
       show_duplicate_prefix = true, -- show base path if tabs have the same name
       separator_style = "thick",    -- slant|slope|thick|thin|{"|", "|"}
       diagnostics = "nvim_lsp",     -- nvim lsp diagnostics integration in tabs or false
@@ -21,28 +19,23 @@ return {
         -- icon = "", -- ▎
         style = "icon", -- icon|underline|none
       },
-      offsets = {
-        -- avoid to show bufferline on top nvim-tree
-        {
-          filetype = "NvimTree",
-          text = "File Explorer", -- title on top
-          highlight = "Directory",
-          separator = true,       -- true is the default, or set custom
-        },
-        -- avoid to show bufferline on top saga outline symbols
-        {
-          filetype = "sagaoutline",
-          text = "Symbols", -- title on top
-          highlight = "Directory",
-          separator = true, -- true is the default, or set custom
-        },
-      },
+      -- offsets = {
+      --   -- avoid to show bufferline on top nvim-tree
+      --   {
+      --     filetype = "NvimTree",
+      --     text = "File Explorer", -- title on top
+      --     highlight = "Directory",
+      --     separator = true,       -- true is the default, or set custom
+      --   },
+      --   -- avoid to show bufferline on top saga outline symbols
+      --   {
+      --     filetype = "sagaoutline",
+      --     text = "Symbols", -- title on top
+      --     highlight = "Directory",
+      --     separator = true, -- true is the default, or set custom
+      --   },
+      -- },
       diagnostics_indicator = function(count, level) -- diagnostics format
-        -- display only the number if aspect is clean
-        if settings.aspect == "clean" then
-          return " " .. count
-        end
-
         --- @diagnostic disable-next-line: undefined-field
         local icon = level:match("error") and " " or " "
         return " " .. icon .. count
