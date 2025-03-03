@@ -7,7 +7,8 @@ return {
         layout = 'vertical',
         width = 0.3,
       },
-      model = 'claude-3.5-sonnet',
+      chat_autocomplete = true,
+      model = "claude-3.7-sonnet",
       mappings = {
         reset = {
           normal = '<C-R>',
@@ -41,6 +42,7 @@ return {
         cmd = "Copilot",
         config = function()
           require("copilot").setup({
+            model = 'claude-3.5-sonnet',
             suggestion = { enabled = false },
             panel = { enabled = false }
           })
