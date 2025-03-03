@@ -18,7 +18,7 @@ local function on_attach(bufnr)
   end
 
   api.config.mappings.default_on_attach(bufnr, opts)
-  vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+  vim.keymap.set("n", "<leader>e", api.tree.toggle)
 end
 
 -- custom setup
@@ -32,7 +32,8 @@ return {
       always_show_folders = false,
     },
     view = {
-      width = 38,
+      width = 40,
+      side = 'right',
     },
     renderer = {
       hidden_display = "all",
