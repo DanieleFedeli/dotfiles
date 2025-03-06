@@ -38,7 +38,7 @@ return {
     keymap.set("n", '<leader>sf', fzf.files, { desc = "[S]earch [F]iles" })
     keymap.set('n', '<leader><space>', fzf.buffers, { desc = '[ ] Find existing buffers' })
     keymap.set('n', '<leader>sg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
-    keymap.set('n', '<leader>sw', fzf.grep_cWORD, { desc = '[S]earch [W]ord' })
+    keymap.set('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch [W]ord' })
     keymap.set('n', '<leader>?', fzf.oldfiles, { desc = '[?] Find recently opened files' })
     keymap.set('n', '<leader>sG', fzf.live_grep_resume, { desc = '[S]earch by [G]rep resume' })
     keymap.set('n', '<leader>.', function()

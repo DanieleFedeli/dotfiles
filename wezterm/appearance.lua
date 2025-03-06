@@ -16,6 +16,10 @@ function Appearance.setup(config)
   config.webgpu_power_preference = 'HighPerformance'
   config.underline_thickness = '1.5pt'
   config.inactive_pane_hsb = { saturation = 0.9, brightness = 0.6 }
+
+  config.tab_max_width = 40
+  config.show_tab_index_in_tab_bar = true
+  config.hide_tab_bar_if_only_one_tab = false
 end
 
 wezterm.on("update-status", function(window, pane)
@@ -42,10 +46,8 @@ wezterm.on("update-status", function(window, pane)
   local cwd = pane:get_current_working_dir()
   if cwd then
     if type(cwd) == "userdata" then
-      -- Wezterm introduced the URL object in 20240127-113634-bbcac864
       cwd = basename(cwd.file_path)
     else
-      -- 20230712-072601-f4abf8fd or earlier version
       cwd = basename(cwd)
     end
   else

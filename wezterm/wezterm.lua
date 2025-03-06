@@ -12,7 +12,6 @@ Appearance.setup(config)
 
 config.default_prog = { zsh_path, '-l' }
 config.default_cwd = home .. '/Work'
-config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
 config.default_workspace = "default"
 config.adjust_window_size_when_changing_font_size = false
