@@ -11,6 +11,9 @@ if wezterm.config_builder then
 end
 
 config.default_prog = { zsh_path, "-l" }
+config.set_environment_variables = {
+	PATH = "/opt/homebrew/bin:" .. os.getenv("PATH"),
+}
 config.default_cwd = home .. "/Work"
 config.scrollback_lines = 3000
 config.default_workspace = "default"

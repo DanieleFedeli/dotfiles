@@ -51,8 +51,10 @@ function Keybindings.setup(config)
 		{ key = "k", mods = "LEADER", action = act.ClearScrollback("ScrollbackAndViewport") },
 		{
 			key = ",",
-			mods = "LEADER",
-			action = act.SpawnCommandInNewTab({ args = { "/bin/zsh", "-c", "nvim ~/.config" } }),
+			mods = "CMD",
+			action = act.SpawnCommandInNewTab({
+				args = { "nvim", wezterm.config_file },
+			}),
 		},
 	}
 
