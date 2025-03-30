@@ -1,7 +1,13 @@
 {
   "extras": [
     "lazyvim.plugins.extras.ai.copilot",
-    "lazyvim.plugins.extras.ai.copilot-chat"
+    "lazyvim.plugins.extras.ai.copilot-chat",
+    "lazyvim.plugins.extras.editor.fzf",
+    "lazyvim.plugins.extras.formatting.biome",
+    "lazyvim.plugins.extras.lang.git",
+    "lazyvim.plugins.extras.lang.sql",
+    "lazyvim.plugins.extras.lang.typescript",
+    "lazyvim.plugins.extras.ui.edgy"
   ],
   "install_version": 8,
   "news": {
