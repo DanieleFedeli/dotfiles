@@ -105,7 +105,7 @@ return {
         capabilities = capabilities,
         settings = {
           Lua = {
-            diagnostics = { globals = { "vim" } },
+            diagnostics = { globals = { "vim", "wezterm", } },
             workspace = {
               library = {
                 [vim.fn.expand("$VIMRUNTIME/lua")] = true,

@@ -1,21 +1,22 @@
 return {
   { "Bilal2453/luvit-meta" },
-  { "justinsgithub/wezterm-types" },
+  { "justinsgithub/wezterm-types", },
   {
     "folke/lazydev.nvim",
     ft = "lua",
+    dependencies = {
+      { "justinsgithub/wezterm-types", },
+    },
     opts = {
-      enabled = true,
       library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         "luvit-meta/library",
-        "wezterm-types/types",
+        {
+          path = vim.fn.stdpath("data") .. "/lazy/wezterm-types/types",
+          mods = { "wezterm" }
+        },
+        { 'lazy.nvim',                 words = { 'lazy', 'LazySpec', 'LazyKeys', 'LazyKeysSpec' } },
         vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
-        --[[
-          vim.fn.expand "$HOME/workspace/neovim/ui/nvchad_types",
-          vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
-          vim.fn.expand "$VIMRUNTIME/lua/vim",
-          "${3rd}/luv/library",
-        ]]
       },
     },
   },
@@ -93,7 +94,7 @@ return {
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
-            score_offset = 90,
+            score_offset = 100,
           },
         },
       },
