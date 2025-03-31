@@ -53,7 +53,7 @@ function Keybindings.setup(config)
 			key = ",",
 			mods = "CMD",
 			action = act.SpawnCommandInNewTab({
-				args = { "nvim", wezterm.config_file },
+				args = { "nvim", os.getenv("HOME") .. "/.config/" },
 			}),
 		},
 	}

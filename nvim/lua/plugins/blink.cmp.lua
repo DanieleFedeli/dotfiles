@@ -7,6 +7,9 @@ return {
       { "giuxtaposition/blink-cmp-copilot" },
     },
     event = "InsertEnter",
+    enabled = function()
+      return not vim.tbl_contains({ "copilot" }, vim.bo.filetype)
+    end,
     opts = {
       sources = {
         default = { "lazydev", "copilot", "lsp", "path", "buffer" },
