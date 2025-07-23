@@ -9,9 +9,6 @@ vim.keymap.set("n", "<Down>", "<Nop>", opts)
 vim.keymap.set("n", "<Left>", "<Nop>", opts)
 vim.keymap.set("n", "<Right>", "<Nop>", opts)
 
--- Select all
-vim.keymap.set("n", "<C-a>", "gg<S-v>G")
-
 -- Use system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', opts)
 vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', opts)

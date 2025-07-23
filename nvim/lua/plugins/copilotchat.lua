@@ -1,10 +1,26 @@
----@type LazySpec
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
   opts = {
-    model = "claude-3.7-sonnet",
     prompts = {
-      Commit = "> #git:staged\n\nWrite a Git commit message with:\n\n1. **Title**: Imperative, max 50 chars, only the first char is uppercase.\n\n2. (Blank line)\n\n3. **Subtitle** (optional): Imperative, max 72 chars, only if it makes the commit message clearer.\n\n**Rules:**\n- Blank line between title and subtitle.\n- No body; only title and optional subtitle.\n- Be clear and concise.\n\nWrap the whole message in a code block with language gitcommit. Strictly respect these rules. Add a body after a the subtitle separated by a new line only if the commit is large and it make sense to add details. You can add as many bodies as you want but they need to add values. Also use simple words, avoid business wording. Also, I don't care about the explaination, so suggest me only the commit message, no other text allowed.",
+      Commit = {
+        prompt = [[
+          Write a Git commit message with:
+
+          1. **Title**: Imperative, max 50 chars, first char uppercase only
+          2. (Blank line)
+          3. **Subtitle** (optional): Imperative, max 72 chars, only if needed
+
+          Rules:
+          - Keep title and subtitle separated by blank line
+          - Be clear and concise
+          - Use simple language, avoid business jargon
+          - Add body paragraphs after subtitle only if necessary for large commits
+          - Each body paragraph must add value
+
+          Return only the commit message in a gitcommit code block.
+          ]],
+        context = "git:staged",
+      },
     },
   },
 }
