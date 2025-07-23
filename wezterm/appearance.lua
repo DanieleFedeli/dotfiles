@@ -21,6 +21,9 @@ function Appearance.setup(config)
 	config.hide_tab_bar_if_only_one_tab = false
 end
 
+local cached_cpu = "N/A"
+local last_cpu_update = 0
+
 wezterm.on("update-status", function(window, pane)
 	local stat = window:active_workspace()
 	local stat_color = "#f7768e"
@@ -67,17 +70,20 @@ wezterm.on("update-status", function(window, pane)
 		return ok and result or nil
 	end
 
-	-- ⚙️ CPU (normalized 0–100%)
+	-- ⚙️ CPU (macOS only, refresh every 30 sec)
 	local cpu = "N/A"
-	if os_name:find("darwin") then
+	local now = os.clock()
+	if now - last_cpu_update > 30 then
 		local raw = run("ps -A -o %cpu | awk '{s+=$1} END {print s}'")
 		local usage = tonumber(raw)
 		if usage then
 			local core_raw = run("sysctl -n hw.ncpu")
 			local cores = tonumber(core_raw) or 1
-			cpu = string.format("%.1f%%", usage / cores)
+			cached_cpu = string.format("%.1f%%", usage / cores)
+			last_cpu_update = now
 		end
 	end
+	cpu = cached_cpu
 
 	-- Set status bars
 	window:set_left_status(wezterm.format({
