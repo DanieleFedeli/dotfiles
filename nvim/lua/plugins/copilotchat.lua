@@ -4,20 +4,19 @@ return {
     prompts = {
       Commit = {
         prompt = [[
-          Write a Git commit message with:
+            Write a Git commit message. Follow these instructions exactly:
 
-          1. **Title**: Imperative, max 50 chars, first char uppercase only
-          2. (Blank line)
-          3. **Subtitle** (optional): Imperative, max 72 chars, only if needed
+            1. Title: Use imperative mood. Maximum 50 characters. Capitalize only the first character.
+            2. Insert a blank line after the title.
+            3. Subtitle (optional): Use imperative mood. Maximum 72 characters. Include only if necessary.
+            4. Insert a blank line after the subtitle if present.
+            5. Body paragraphs: Add only if the commit is large. Each paragraph must add value.
 
-          Rules:
-          - Keep title and subtitle separated by blank line
-          - Be clear and concise
-          - Use simple language, avoid business jargon
-          - Add body paragraphs after subtitle only if necessary for large commits
-          - Each body paragraph must add value
-
-          Return only the commit message in a gitcommit code block.
+            Rules:
+            - Separate title and subtitle with a blank line.
+            - Be clear and concise.
+            - Use simple language. Do not use business jargon.
+            - Return only the commit message in a gitcommit code block.
           ]],
         context = "git:staged",
       },
