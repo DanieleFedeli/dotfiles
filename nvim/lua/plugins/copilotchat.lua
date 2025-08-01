@@ -1,3 +1,5 @@
+local select = require "CopilotChat.select"
+
 return {
   "CopilotC-Nvim/CopilotChat.nvim",
   opts = {
@@ -47,6 +49,8 @@ Use this exact format:
 ```
         ]],
         context = "system:`git diff main`",
+        description = "Generate a pull request description based on the code changes.",
+        selection = select.buffer,
       },
     },
   },
