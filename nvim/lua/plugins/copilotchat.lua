@@ -14,8 +14,7 @@ Do not use any prefixes like feat:, fix:, etc.
 Be specific about what changed and why. Avoid vague words like “update” or “change”.
 Write for a future human developer reading the Git history.
 Return only the commit message in a ```gitcommit code block.
-          ]],
-        context = "git:staged",
+          ]]
       },
       PullRequest = {
         prompt = [[
