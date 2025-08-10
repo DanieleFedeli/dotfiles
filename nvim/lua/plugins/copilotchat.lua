@@ -27,6 +27,7 @@ Focus on what changed, why it was done, how it works, and any caveats.
 Write clearly and professionally.
 Do not include a title or commit message.
 Do not invent features not present in the diff.
+Use a block diff to show the changes.
 Use this exact format:
 ```
 ## What does this PR do?
@@ -44,6 +45,8 @@ Use this exact format:
 ## Anything to watch out for?
 
 ...
+
+
 
 ```
         ]],
