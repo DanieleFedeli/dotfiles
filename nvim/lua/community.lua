@@ -4,6 +4,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.biome" },
   { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.completion.copilot-lua" },

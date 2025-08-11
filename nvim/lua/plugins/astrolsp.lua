@@ -17,9 +17,6 @@ return {
       format_on_save = {
         enabled = true, -- enable or disable format on save globally
       },
-      filter = function(client) -- filter function to disable formatting for specific clients
-        return client.name == "biome" -- enable formatting for all clients
-      end,
       timeout_ms = 1000, -- default format timeout
     },
     -- enable servers that you already have installed without mason
