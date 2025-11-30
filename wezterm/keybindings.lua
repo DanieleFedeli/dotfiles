@@ -1,5 +1,4 @@
 local wezterm = require("wezterm") -- [[@as Wezterm]]
-local Workspaces = require("workspaces")
 local act = wezterm.action
 
 local Keybindings = {}
@@ -66,15 +65,7 @@ function Keybindings.setup(config)
 			action = act.ActivateTab(i),
 		})
 	end
-
-	-- Keybinding to Load "LX" Workspace
-	table.insert(config.keys, {
-		key = "q",
-		mods = "LEADER",
-		action = wezterm.action_callback(function()
-			Workspaces.load_lx()
-		end),
-	})
 end
+
 
 return Keybindings

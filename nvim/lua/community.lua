@@ -5,9 +5,8 @@ return {
   { import = "astrocommunity.pack.biome" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.typescript" },
-  { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.ai.opencode-nvim" },
+  { import = "astrocommunity.colorscheme.nordic-nvim" },
   { import = "astrocommunity.motion.mini-surround" },
-  { import = "astrocommunity.completion.copilot-lua" },
-  { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.editing-support.copilotchat-nvim" },
 }
