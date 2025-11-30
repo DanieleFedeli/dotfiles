@@ -6,6 +6,7 @@ return {
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.ai.opencode-nvim" },
+  { import = "astrocommunity.workflow.hardtime-nvim" },
   { import = "astrocommunity.colorscheme.nordic-nvim" },
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.editing-support.copilotchat-nvim" },
