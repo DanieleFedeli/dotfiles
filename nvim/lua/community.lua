@@ -10,4 +10,8 @@ return {
   { import = "astrocommunity.colorscheme.cyberdream-nvim" },
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.editing-support.copilotchat-nvim" },
+  { import = "astrocommunity.git.neogit" },
+  { import = "astrocommunity.diagnostics.trouble-nvim" },
+  { import = "astrocommunity.test.neotest" },
+  { import = "astrocommunity.code-runner.sniprun" },
 }
