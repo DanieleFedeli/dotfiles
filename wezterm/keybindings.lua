@@ -3,6 +3,7 @@ local act = wezterm.action
 
 local Keybindings = {}
 
+-- Check if the current pane is running Neovim
 local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
 end
@@ -14,6 +15,9 @@ local direction_keys = {
 	l = "Right",
 }
 
+-- Smart navigation that respects Neovim
+-- When in Neovim, pass the keys through to vim for vim-tmux-navigator
+-- When not in Neovim, handle navigation/resizing in WezTerm
 local function split_nav(resize_or_move, key)
 	return {
 		key = key,
@@ -36,25 +40,32 @@ local function split_nav(resize_or_move, key)
 end
 
 function Keybindings.setup(config)
+	-- Leader key: Ctrl+b (like tmux)
 	config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 
 	config.keys = {
-		-- Move between panes
+		-- Vim-aware pane navigation with Ctrl+h/j/k/l
 		split_nav("move", "h"),
 		split_nav("move", "j"),
 		split_nav("move", "k"),
 		split_nav("move", "l"),
-		-- Resize panes
+		-- Vim-aware pane resizing with Meta+h/j/k/l
 		split_nav("resize", "h"),
 		split_nav("resize", "j"),
 		split_nav("resize", "k"),
 		split_nav("resize", "l"),
+		
+		-- Pane management
 		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
 		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+		
+		-- Copy mode and utilities
+		{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 		{ key = "k", mods = "LEADER", action = act.ClearScrollback("ScrollbackAndViewport") },
+		
+		-- Quick access to config
 		{
 			key = ",",
 			mods = "CMD",
@@ -64,7 +75,7 @@ function Keybindings.setup(config)
 		},
 	}
 
-	-- Leader + Number to Activate Tab
+	-- Leader + Number to activate specific tab (1-9)
 	for i = 0, 8 do
 		table.insert(config.keys, {
 			key = tostring(i + 1),
