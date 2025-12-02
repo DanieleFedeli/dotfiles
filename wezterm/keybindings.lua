@@ -39,10 +39,16 @@ function Keybindings.setup(config)
 	config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 2000 }
 
 	config.keys = {
+		-- Move between panes
 		split_nav("move", "h"),
 		split_nav("move", "j"),
 		split_nav("move", "k"),
 		split_nav("move", "l"),
+		-- Resize panes
+		split_nav("resize", "h"),
+		split_nav("resize", "j"),
+		split_nav("resize", "k"),
+		split_nav("resize", "l"),
 		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 		{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
