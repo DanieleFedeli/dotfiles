@@ -53,6 +53,7 @@ function Keybindings.setup(config)
 		{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
 		{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
+		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
 		{ key = "k", mods = "LEADER", action = act.ClearScrollback("ScrollbackAndViewport") },
 		{
 			key = ",",
