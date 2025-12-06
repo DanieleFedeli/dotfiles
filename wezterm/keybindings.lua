@@ -54,17 +54,16 @@ function Keybindings.setup(config)
 		split_nav("resize", "j"),
 		split_nav("resize", "k"),
 		split_nav("resize", "l"),
-		
 		-- Pane management
-		{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
+		{ key = "-",  mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "\\", mods = "LEADER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-		{ key = "z", mods = "LEADER", action = act.TogglePaneZoomState },
-		{ key = "x", mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
-		
+		{ key = "z",  mods = "LEADER", action = act.TogglePaneZoomState },
+		{ key = "x",  mods = "LEADER", action = act.CloseCurrentPane({ confirm = true }) },
+
 		-- Copy mode and utilities
-		{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
-		{ key = "k", mods = "LEADER", action = act.ClearScrollback("ScrollbackAndViewport") },
-		
+		{ key = "[",  mods = "LEADER", action = act.ActivateCopyMode },
+		{ key = "k",  mods = "LEADER", action = act.ClearScrollback("ScrollbackAndViewport") },
+
 		-- Quick access to config
 		{
 			key = ",",
@@ -84,6 +83,5 @@ function Keybindings.setup(config)
 		})
 	end
 end
-
 
 return Keybindings
