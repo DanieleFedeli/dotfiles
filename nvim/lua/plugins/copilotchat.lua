@@ -53,12 +53,8 @@ Description rules:
 
 Output format:
 - Output ONLY a ready-to-run gh CLI command
+- Wrap the command inside a diff code block for easy yanking
 - Use HEREDOC syntax for the body
-- Example:
-gh pr create --title "Add rate limiting to API" --body "$(cat <<'EOF'
-Prevents abuse by limiting requests to 100/min per user.
-EOF
-)"
 ]],
         prompt = "Write a gh pr create command for the changes in this branch.",
         resources = {
