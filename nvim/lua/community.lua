@@ -3,6 +3,7 @@ return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.biome" },
+  { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.json" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.markdown-and-latex.render-markdown-nvim" },

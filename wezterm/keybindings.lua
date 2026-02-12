@@ -15,6 +15,26 @@ local direction_keys = {
 	l = "Right",
 }
 
+-- Workspace tabs configuration for Leader + q
+-- Each entry can have: title, cwd (working directory), cmd (shell command)
+local workspace_tabs = {
+	{ title = "Service editor", cwd = "~/Work/service-editor", cmd = "nvim ." },
+	{ title = "Disco GQL", cwd = "~/Work/service-disco-graphql-api", cmd = "nvim ." },
+	{ title = "Disco Writer", cwd = "~/Work/service-disco-writer", cmd = "nvim ." },
+	{ title = "GH notifications", cmd = "GH_TOKEN=$(gh auth token) gh news" },
+	{ title = "GH misc", cmd = "gh dash" },
+	{ title = "Posting", cmd = "posting" },
+}
+
+-- Shell initialization to set up PATH and fnm for node
+local shell_init = 'export PATH="/opt/homebrew/bin:$HOME/.local/bin:$PATH" && eval "$(fnm env)"'
+
+-- Build shell command with proper environment
+local function build_shell_cmd(cwd, cmd)
+	local cd_cmd = cwd and ("cd " .. cwd .. " && ") or ""
+	return { "/bin/zsh", "-c", shell_init .. " && " .. cd_cmd .. cmd }
+end
+
 -- Smart navigation that respects Neovim
 -- When in Neovim, pass the keys through to vim for vim-tmux-navigator
 -- When not in Neovim, handle navigation/resizing in WezTerm
@@ -71,6 +91,41 @@ function Keybindings.setup(config)
 			action = act.SpawnCommandInNewTab({
 				args = { "nvim", os.getenv("HOME") .. "/.config/" },
 			}),
+		},
+
+		-- Open workspace tabs in a new window (Leader + q)
+		{
+			key = "q",
+			mods = "LEADER",
+			action = wezterm.action_callback(function(win, pane)
+				local mux = wezterm.mux
+				local first_tab = workspace_tabs[1]
+				local first_cwd = first_tab.cwd and first_tab.cwd:gsub("^~", os.getenv("HOME")) or nil
+
+				-- Spawn a new window with the first tab
+				local new_tab, new_pane, new_window = mux.spawn_window({
+					args = build_shell_cmd(first_cwd, first_tab.cmd),
+				})
+				if first_tab.title then
+					new_tab:set_title(first_tab.title)
+				end
+
+				-- Add remaining tabs to the new window
+				for i = 2, #workspace_tabs do
+					local tab = workspace_tabs[i]
+					local cwd = tab.cwd and tab.cwd:gsub("^~", os.getenv("HOME")) or nil
+					local new_tab2 = new_window:spawn_tab({
+						args = build_shell_cmd(cwd, tab.cmd),
+					})
+					if tab.title then
+						new_tab2:set_title(tab.title)
+					end
+				end
+
+				-- Focus the first tab and maximize the window
+				new_tab:activate()
+				new_window:gui_window():maximize()
+			end),
 		},
 	}
 

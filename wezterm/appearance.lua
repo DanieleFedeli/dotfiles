@@ -3,7 +3,7 @@ local wezterm = require("wezterm") --[[@as Wezterm]]
 local Appearance = {}
 
 function Appearance.setup(config)
-	config.color_scheme = 'Catppuccin Latte'
+	config.color_scheme = 'Catppuccin Mocha'
 	config.font = wezterm.font("MesloLGS NF")
 	config.font_size = 18.0
 	config.window_background_opacity = 1
@@ -17,6 +17,7 @@ function Appearance.setup(config)
 	config.tab_max_width = 40
 	config.show_tab_index_in_tab_bar = true
 	config.hide_tab_bar_if_only_one_tab = true
+	config.use_fancy_tab_bar = false
 end
 
 return Appearance

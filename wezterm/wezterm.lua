@@ -14,6 +14,9 @@ config.adjust_window_size_when_changing_font_size = false
 config.max_fps = 240
 config.animation_fps = 120
 
+-- Use login shell to get full environment (PATH, fnm, etc.)
+config.default_prog = { "/bin/zsh", "-l" }
+
 Appearance.setup(config)
 Keybindings.setup(config)
 
