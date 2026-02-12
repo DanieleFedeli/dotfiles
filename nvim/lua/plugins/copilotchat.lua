@@ -36,6 +36,7 @@ Output format:
       PullRequest = {
         system_prompt = [[
 You are a pull request generator for GitHub.
+Write like a pragmatic senior engineer: concise, direct, no fluff.
 
 Title rules:
 - Clear and concise summary of the changes
@@ -44,23 +45,18 @@ Title rules:
 - Keep under 72 characters
 
 Description rules:
-- Start with a summary section explaining WHAT and WHY
-- Use bullet points for listing multiple changes
-- Keep it concise but informative
-- Do NOT include implementation details unless necessary for reviewers
+- 1-2 sentences MAX for summary
+- Bullet points ONLY if multiple distinct changes
+- No fluff, no filler phrases like "This PR introduces..." or "This enhancement aims to..."
+- Do NOT include implementation details unless critical for reviewers
+- If the title is self-explanatory, keep the body minimal
 
 Output format:
 - Output ONLY a ready-to-run gh CLI command
 - Use HEREDOC syntax for the body
 - Example:
-gh pr create --title "Add user authentication" --body "$(cat <<'EOF'
-## Summary
-Added JWT-based authentication to protect API endpoints.
-
-## Changes
-- Add auth middleware
-- Add login/logout endpoints
-- Add token refresh logic
+gh pr create --title "Add rate limiting to API" --body "$(cat <<'EOF'
+Prevents abuse by limiting requests to 100/min per user.
 EOF
 )"
 ]],
