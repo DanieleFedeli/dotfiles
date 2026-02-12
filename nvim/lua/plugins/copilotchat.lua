@@ -53,8 +53,12 @@ Description rules:
 
 Output format:
 - Output ONLY a ready-to-run gh CLI command
-- Wrap the command inside a diff code block for easy yanking
-- Use HEREDOC syntax for the body
+- Wrap the command inside a sh code block
+- For multi-line body, use: --body "$(cat <<'EOF'
+<body content>
+EOF
+)"
+- NEVER use --body <<'EOF' directly (invalid syntax)
 ]],
         prompt = "Write a gh pr create command for the changes in this branch.",
         resources = {
