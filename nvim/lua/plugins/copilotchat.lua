@@ -53,6 +53,8 @@ Description rules:
 
 Output format:
 - Output ONLY a ready-to-run gh CLI command
+- Always include --assignee @me
+- Always include --reviewer @copilot
 - Wrap the command inside a sh code block
 - For multi-line body, use: --body "$(cat <<'EOF'
 <body content>
