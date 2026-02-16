@@ -17,7 +17,7 @@ function Appearance.setup(config)
 	config.tab_max_width = 40
 	config.show_tab_index_in_tab_bar = true
 	config.hide_tab_bar_if_only_one_tab = true
-	config.use_fancy_tab_bar = false
+	config.use_fancy_tab_bar = true
 end
 
 return Appearance

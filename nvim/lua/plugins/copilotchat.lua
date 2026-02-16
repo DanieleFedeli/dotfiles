@@ -69,7 +69,7 @@ EOF
 ]],
         prompt = "Write a gh pr create command for the changes in this branch.",
         resources = {
-          'gitdiff',
+          'gitdiff:main...HEAD',
         },
       },
     },
